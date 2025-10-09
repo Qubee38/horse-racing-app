@@ -4,6 +4,10 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
+# ただし、テンプレートは含める
+!.env.example
+!.env.production.example
 
 # データベース（開発用のみ除外、本番は必要に応じて）
 *.db-journal
