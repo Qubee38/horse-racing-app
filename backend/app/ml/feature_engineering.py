@@ -66,8 +66,9 @@ class FeatureEngineering:
     def _get_reference_root(self) -> str:
         """参照データのパスを取得"""
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
-        return os.path.join(project_root, "data", "reference")
+        # project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
+        backend_root = os.path.dirname(os.path.dirname(current_dir))
+        return os.path.join(backend_root, "data", "reference")
     
     def _load_reference_data(self):
         """参照用データを読み込み"""

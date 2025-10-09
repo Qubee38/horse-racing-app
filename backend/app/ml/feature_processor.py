@@ -18,7 +18,8 @@ class FeatureProcessor:
     def _get_project_root(self) -> str:
         """プロジェクトルートパスを取得"""
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        return os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
+        # return os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
+        return os.path.dirname(os.path.dirname(current_dir))
     
     def process_race_features_from_csv(self, csv_path: str) -> Optional[pd.DataFrame]:
         """

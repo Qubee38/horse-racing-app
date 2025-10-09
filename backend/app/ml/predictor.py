@@ -20,8 +20,9 @@ class IntegratedHorseRacingPredictor:
         # プロジェクトルートからの相対パスでモデルディレクトリを指定
         if models_path is None:
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
-            models_path = os.path.join(project_root, "data", "models")
+            backend_root = os.path.dirname(os.path.dirname(current_dir))
+            # project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
+            models_path = os.path.join(backend_root, "data", "models")
         
         self.models_path = models_path
         self.win_model = None

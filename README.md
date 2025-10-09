@@ -241,15 +241,15 @@ horse-racing-app/
 │   │   │   ├── feature_processor.py
 │   │   │   └── scraper_integration.py
 │   │   └── config/              # 設定管理
+│   ├── data/                    # データディレクトリ
+│   │   ├── models/              # LightGBMモデル
+│   │   ├── reference/           # 参照データ
+│   │   ├── config/              # 設定ファイル
+│   │   ├── race_input/          # スクレイピング結果
+│   │   └── horse_racing.db      # SQLiteデータベース
 │   ├── scripts/                 # 管理スクリプト
 │   ├── main.py                  # アプリケーションエントリーポイント
 │   └── requirements.txt
-├── data/                        # データディレクトリ
-│   ├── models/                  # LightGBMモデル
-│   ├── reference/               # 参照データ
-│   ├── config/                  # 設定ファイル
-│   └── race_input/              # スクレイピング結果
-├── horse_racing.db              # SQLiteデータベース
 ├── .gitignore
 └── README.md
 ```

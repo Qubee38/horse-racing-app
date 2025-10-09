@@ -5,7 +5,7 @@ import os
 
 class Settings(BaseSettings):
     # プロジェクトルート取得
-    BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent.parent  # backend/app/core/ から4つ上
+    BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent
     
     # データディレクトリ
     DATA_DIR: Path = BASE_DIR / "data"

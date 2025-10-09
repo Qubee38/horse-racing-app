@@ -50,8 +50,9 @@ class NetkeibaRaceScraper:
         if data_dir is None:
             # backend/app/ml/ から ../../../data への相対パス
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
-            data_dir = os.path.join(project_root, "data")
+            backend_root = os.path.dirname(os.path.dirname(current_dir))
+            # project_root = os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))
+            data_dir = os.path.join(backend_root, "data")
         
         self.data_dir = data_dir
         self.base_url = "https://race.netkeiba.com/race/shutuba.html?race_id="

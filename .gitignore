@@ -10,19 +10,20 @@
 !.env.production.example
 
 # データベース（開発用のみ除外、本番は必要に応じて）
-*.db-journal
-*.db-wal
-*.db-shm
+backend/data/*.db-journal
+backend/data/*.db-wal
+backend/data/*.db-shm
 
 # データファイル（動的生成されるもののみ除外）
-data/race_input/
-data/predict_result/
-data/config/*.json
-!data/config/.gitkeep
+backend/data/race_input/
+backend/data/predict_result/
+backend/data/debug/
+backend/data/config/*.json
+!backend/data/config/.gitkeep
 
 # ただし、以下は含める（必須ファイル）
-!data/models/
-!data/reference/
+!backend/data/models/
+!backend/data/reference/
 
 # Python
 __pycache__/
