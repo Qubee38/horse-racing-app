@@ -1,27 +1,56 @@
 from pydantic_settings import BaseSettings
 from typing import Optional
+from pathlib import Path
+import os
 
 class Settings(BaseSettings):
-    # データベース設定（SQLiteがデフォルト、PostgreSQL対応も含む）
-    DATABASE_URL: str = "sqlite:///./horse_racing.db"
-    # 将来PostgreSQLに変更する場合: "postgresql://user:password@localhost:5432/horse_racing"
+    # プロジェクトルート取得
+    BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent.parent  # backend/app/core/ から4つ上
     
-    SECRET_KEY: str = "your-secret-key-here"
+    # データディレクトリ
+    DATA_DIR: Path = BASE_DIR / "data"
     
-    # 開発/本番環境の切り替え
+    # データベース設定（動的に生成）
+    _DATABASE_URL: Optional[str] = None
+    
+    @property
+    def DATABASE_URL(self) -> str:
+        """データベースURLを返す（環境変数または自動生成）"""
+        if self._DATABASE_URL:
+            return self._DATABASE_URL
+        # デフォルト: プロジェクトルートのdata/horse_racing.db
+        db_path = self.DATA_DIR / "horse_racing.db"
+        return f"sqlite:///{db_path}"
+    
+    # セキュリティ
+    SECRET_KEY: str = "your-secret-key-here-change-in-production"
+    
+    # 環境設定
     ENVIRONMENT: str = "development"
     
     # データベースエンジン設定
     DB_ECHO: bool = True  # SQLログ出力（開発時のみ）
-
-    # AI Commentary用: Claude API Key（修正: Optional型に変更）
+    
+    # Anthropic Claude API
     ANTHROPIC_API_KEY: Optional[str] = None
+    
+    # CORS設定（カンマ区切りで複数URL対応）
+    ALLOWED_ORIGINS: str = "http://localhost:3000"
+    
+    @property
+    def cors_origins(self) -> list:
+        """CORS許可オリジンのリストを返す"""
+        return [origin.strip() for origin in self.ALLOWED_ORIGINS.split(",")]
     
     class Config:
         env_file = ".env"
-        extra = "allow"  # または "ignore"
+        case_sensitive = True
+        extra = "allow"
 
 settings = Settings()
+
+# データディレクトリ作成（重要）
+os.makedirs(settings.DATA_DIR, exist_ok=True)
 
 # データベースURLからエンジンタイプを判定
 def is_sqlite() -> bool:
