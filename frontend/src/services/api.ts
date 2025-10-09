@@ -22,7 +22,7 @@ import {
 } from '../types/api';
 
 // API設定
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
 const API_TIMEOUT = 60000; // デフォルト60秒
 const AI_COMMENTARY_TIMEOUT = 180000; // AI解説専用: 180秒（3分）
 
@@ -30,7 +30,7 @@ const AI_COMMENTARY_TIMEOUT = 180000; // AI解説専用: 180秒（3分）
  * Axiosクライアントの設定
  */
 const apiClient = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: `${API_BASE_URL}/api`,
   timeout: API_TIMEOUT,
   headers: {
     'Content-Type': 'application/json',
