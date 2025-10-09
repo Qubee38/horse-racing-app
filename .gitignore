@@ -138,3 +138,7 @@ geckodriver
 
 # Git関連（サブディレクトリの.git除外）
 **/.git
+
+# 作業メモ関連
+memo*
+project_summary*
