@@ -1,0 +1,346 @@
+{
+  "date": "2023-12-28",
+  "races": [
+    {
+      "netkeiba_race_id": "202306050901",
+      "venue": "中山",
+      "race_number": 1,
+      "race_name": "2歳未勝利",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050901/"
+    },
+    {
+      "netkeiba_race_id": "202306050902",
+      "venue": "中山",
+      "race_number": 2,
+      "race_name": "2歳未勝利",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050902/"
+    },
+    {
+      "netkeiba_race_id": "202306050903",
+      "venue": "中山",
+      "race_number": 3,
+      "race_name": "2歳未勝利",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050903/"
+    },
+    {
+      "netkeiba_race_id": "202306050904",
+      "venue": "中山",
+      "race_number": 4,
+      "race_name": "2歳未勝利",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050904/"
+    },
+    {
+      "netkeiba_race_id": "202306050905",
+      "venue": "中山",
+      "race_number": 5,
+      "race_name": "2歳新馬",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050905/"
+    },
+    {
+      "netkeiba_race_id": "202306050906",
+      "venue": "中山",
+      "race_number": 6,
+      "race_name": "2歳新馬",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050906/"
+    },
+    {
+      "netkeiba_race_id": "202306050907",
+      "venue": "中山",
+      "race_number": 7,
+      "race_name": "3歳以上1勝クラス",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050907/"
+    },
+    {
+      "netkeiba_race_id": "202306050908",
+      "venue": "中山",
+      "race_number": 8,
+      "race_name": "3歳以上1勝クラス",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050908/"
+    },
+    {
+      "netkeiba_race_id": "202306050909",
+      "venue": "中山",
+      "race_number": 9,
+      "race_name": "立志賞(2勝クラス)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050909/"
+    },
+    {
+      "netkeiba_race_id": "202306050910",
+      "venue": "中山",
+      "race_number": 10,
+      "race_name": "ベストウィッシュC(2勝クラス)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050910/"
+    },
+    {
+      "netkeiba_race_id": "202306050911",
+      "venue": "中山",
+      "race_number": 11,
+      "race_name": "ホープフルS(G1)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050911/"
+    },
+    {
+      "netkeiba_race_id": "202306050912",
+      "venue": "中山",
+      "race_number": 12,
+      "race_name": "2023ファイナルS(3勝クラス)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202306050912/"
+    },
+    {
+      "netkeiba_race_id": "202309050901",
+      "venue": "阪神",
+      "race_number": 1,
+      "race_name": "2歳未勝利",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050901/"
+    },
+    {
+      "netkeiba_race_id": "202309050902",
+      "venue": "阪神",
+      "race_number": 2,
+      "race_name": "2歳未勝利",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050902/"
+    },
+    {
+      "netkeiba_race_id": "202309050903",
+      "venue": "阪神",
+      "race_number": 3,
+      "race_name": "2歳未勝利",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050903/"
+    },
+    {
+      "netkeiba_race_id": "202309050904",
+      "venue": "阪神",
+      "race_number": 4,
+      "race_name": "障害3歳以上未勝利",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050904/"
+    },
+    {
+      "netkeiba_race_id": "202309050905",
+      "venue": "阪神",
+      "race_number": 5,
+      "race_name": "2歳新馬",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050905/"
+    },
+    {
+      "netkeiba_race_id": "202309050906",
+      "venue": "阪神",
+      "race_number": 6,
+      "race_name": "2歳1勝クラス",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050906/"
+    },
+    {
+      "netkeiba_race_id": "202309050907",
+      "venue": "阪神",
+      "race_number": 7,
+      "race_name": "3歳以上1勝クラス",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050907/"
+    },
+    {
+      "netkeiba_race_id": "202309050908",
+      "venue": "阪神",
+      "race_number": 8,
+      "race_name": "3歳以上1勝クラス",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050908/"
+    },
+    {
+      "netkeiba_race_id": "202309050909",
+      "venue": "阪神",
+      "race_number": 9,
+      "race_name": "春待月賞(2勝クラス)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050909/"
+    },
+    {
+      "netkeiba_race_id": "202309050910",
+      "venue": "阪神",
+      "race_number": 10,
+      "race_name": "フォーチュンC(2勝クラス)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050910/"
+    },
+    {
+      "netkeiba_race_id": "202309050911",
+      "venue": "阪神",
+      "race_number": 11,
+      "race_name": "ベテルギウスS(L)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050911/"
+    },
+    {
+      "netkeiba_race_id": "202309050912",
+      "venue": "阪神",
+      "race_number": 12,
+      "race_name": "カウントダウンS(3勝クラス)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202309050912/"
+    },
+    {
+      "netkeiba_race_id": "202344122801",
+      "venue": "未定",
+      "race_number": 1,
+      "race_name": "3歳　103万(OP)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202344122801/"
+    },
+    {
+      "netkeiba_race_id": "202344122802",
+      "venue": "未定",
+      "race_number": 2,
+      "race_name": "3歳　103万(OP)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202344122802/"
+    },
+    {
+      "netkeiba_race_id": "202344122803",
+      "venue": "未定",
+      "race_number": 3,
+      "race_name": "2歳六　七(OP)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202344122803/"
+    },
+    {
+      "netkeiba_race_id": "202344122804",
+      "venue": "未定",
+      "race_number": 4,
+      "race_name": "2歳六　七(OP)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202344122804/"
+    },
+    {
+      "netkeiba_race_id": "202344122805",
+      "venue": "未定",
+      "race_number": 5,
+      "race_name": "C1七　八九(OP)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202344122805/"
+    },
+    {
+      "netkeiba_race_id": "202344122806",
+      "venue": "未定",
+      "race_number": 6,
+      "race_name": "ライラ賞(OP)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202344122806/"
+    },
+    {
+      "netkeiba_race_id": "202344122807",
+      "venue": "未定",
+      "race_number": 7,
+      "race_name": "C1七　八九(OP)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202344122807/"
+    },
+    {
+      "netkeiba_race_id": "202344122808",
+      "venue": "未定",
+      "race_number": 8,
+      "race_name": "B3五(OP)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202344122808/"
+    },
+    {
+      "netkeiba_race_id": "202344122809",
+      "venue": "未定",
+      "race_number": 9,
+      "race_name": "’23セラフィナイト(OP)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202344122809/"
+    },
+    {
+      "netkeiba_race_id": "202344122810",
+      "venue": "未定",
+      "race_number": 10,
+      "race_name": "ラストトゥインクル賞(OP)",
+      "start_time": "未定",
+      "distance": 0,
+      "surface": "未定",
+      "url": "https://db.netkeiba.com/race/202344122810/"
+    }
+  ],
+  "total_count": 34
+}
