@@ -140,5 +140,4 @@ geckodriver
 **/.git
 
 # 作業メモ関連
-memo*
-project_summary*
+memo/*
