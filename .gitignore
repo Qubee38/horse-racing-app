@@ -19,6 +19,8 @@ backend/data/race_input/
 backend/data/predict_result/
 backend/data/debug/
 backend/data/config/*.json
+backend/data/evaluation/
+backend/data/payback/
 !backend/data/config/.gitkeep
 
 # ただし、以下は含める（必須ファイル）
@@ -144,5 +146,6 @@ geckodriver
 # Git関連（サブディレクトリの.git除外）
 **/.git
 
-# 作業メモ関連
+# 作業・メモ関連
 memo/*
+work/*
