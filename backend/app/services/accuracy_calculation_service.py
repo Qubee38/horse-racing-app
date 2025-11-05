@@ -590,35 +590,24 @@ class AccuracyCalculationService:
         win_threshold: float,
         place_threshold: float
     ) -> List[Dict]:
-        """馬場種別の統計（ROI追加版）"""
+        """馬場種別の統計（競馬場別と同じ構造）"""
         track_groups = defaultdict(list)
         for r in results:
             track_type = r.get("track_type")
             if track_type:
                 track_groups[track_type].append(r)
-        
+
         track_stats = []
         for track_type, track_results in track_groups.items():
             rank_stats = self._calculate_rank_based_stats(track_results)
             prob_stats = self._calculate_probability_based_stats(track_results, win_threshold, place_threshold)
-            
+
             track_stats.append({
                 "track_type": track_type,
-                "total_races": rank_stats["total_races"],
-                "win": {
-                    "hit_horses": rank_stats["win"]["hit_horses"],
-                    "total_horses": rank_stats["win"]["total_horses"],
-                    "accuracy": rank_stats["win"]["accuracy"],
-                    "roi": rank_stats["win"]["roi"]
-                },
-                "place": {
-                    "hit_horses": rank_stats["place"]["hit_horses"],
-                    "total_horses": rank_stats["place"]["total_horses"],
-                    "accuracy": rank_stats["place"]["accuracy"],
-                    "roi": rank_stats["place"]["roi"]
-                }
+                "by_rank": rank_stats,
+                "by_probability": prob_stats
             })
-        
+
         return track_stats
     
     def _calculate_by_distance(
@@ -627,7 +616,7 @@ class AccuracyCalculationService:
         win_threshold: float,
         place_threshold: float
     ) -> List[Dict]:
-        """距離別の統計（ROI追加版）"""
+        """距離別の統計（競馬場別と同じ構造）"""
         distance_ranges = {
             "1000-1200m": (1000, 1200),
             "1200-1400m": (1200, 1400),
@@ -638,33 +627,23 @@ class AccuracyCalculationService:
             "2200-2400m": (2200, 2400),
             "2400m以上": (2400, 9999)
         }
-        
+
         distance_stats = []
         for range_name, (min_dist, max_dist) in distance_ranges.items():
             range_results = [
                 r for r in results
                 if r.get("distance") and min_dist <= r["distance"] < max_dist
             ]
-            
+
             if range_results:
                 rank_stats = self._calculate_rank_based_stats(range_results)
+                prob_stats = self._calculate_probability_based_stats(range_results, win_threshold, place_threshold)
                 distance_stats.append({
                     "distance_range": range_name,
-                    "total_races": rank_stats["total_races"],
-                    "win": {
-                        "hit_horses": rank_stats["win"]["hit_horses"],
-                        "total_horses": rank_stats["win"]["total_horses"],
-                        "accuracy": rank_stats["win"]["accuracy"],
-                        "roi": rank_stats["win"]["roi"]
-                    },
-                    "place": {
-                        "hit_horses": rank_stats["place"]["hit_horses"],
-                        "total_horses": rank_stats["place"]["total_horses"],
-                        "accuracy": rank_stats["place"]["accuracy"],
-                        "roi": rank_stats["place"]["roi"]
-                    }
+                    "by_rank": rank_stats,
+                    "by_probability": prob_stats
                 })
-        
+
         return distance_stats
     
     def _calculate_by_track_condition(
@@ -673,37 +652,27 @@ class AccuracyCalculationService:
         win_threshold: float,
         place_threshold: float
     ) -> List[Dict]:
-        """馬場条件別の統計（新規追加）"""
+        """馬場条件別の統計（競馬場別と同じ構造）"""
         condition_groups = defaultdict(list)
         for r in results:
             condition = r.get("track_condition") or "不明"
             condition_groups[condition].append(r)
-        
+
         condition_stats = []
         for condition, condition_results in condition_groups.items():
             rank_stats = self._calculate_rank_based_stats(condition_results)
-            
+            prob_stats = self._calculate_probability_based_stats(condition_results, win_threshold, place_threshold)
+
             condition_stats.append({
                 "track_condition": condition,
-                "total_races": rank_stats["total_races"],
-                "win": {
-                    "hit_horses": rank_stats["win"]["hit_horses"],
-                    "total_horses": rank_stats["win"]["total_horses"],
-                    "accuracy": rank_stats["win"]["accuracy"],
-                    "roi": rank_stats["win"]["roi"]
-                },
-                "place": {
-                    "hit_horses": rank_stats["place"]["hit_horses"],
-                    "total_horses": rank_stats["place"]["total_horses"],
-                    "accuracy": rank_stats["place"]["accuracy"],
-                    "roi": rank_stats["place"]["roi"]
-                }
+                "by_rank": rank_stats,
+                "by_probability": prob_stats
             })
-        
+
         # 馬場条件の順序でソート
         condition_order = {"良": 0, "稍重": 1, "重": 2, "不良": 3, "不明": 99}
         condition_stats.sort(key=lambda x: condition_order.get(x["track_condition"], 99))
-        
+
         return condition_stats
     
     def _empty_summary(self, start_date: date, end_date: date) -> Dict:

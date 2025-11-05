@@ -290,13 +290,6 @@ export interface ProbabilityBreakdown {
   place: ProbabilityRangeStats[];
 }
 
-export interface DetailedBetStats {
-  hit_horses: number;
-  total_horses: number;
-  accuracy: number;
-  roi: number;
-}
-
 export interface VenueStats {
   venue: string;
   by_rank: RankBasedStats;
@@ -311,23 +304,20 @@ export interface GradeStats {
 
 export interface TrackTypeStats {
   track_type: string;
-  total_races: number;
-  win: DetailedBetStats;
-  place: DetailedBetStats;
+  by_rank: RankBasedStats;
+  by_probability: ProbabilityBasedStats;
 }
 
 export interface DistanceRangeStats {
   distance_range: string;
-  total_races: number;
-  win: DetailedBetStats;
-  place: DetailedBetStats;
+  by_rank: RankBasedStats;
+  by_probability: ProbabilityBasedStats;
 }
 
 export interface TrackConditionStats {
   track_condition: string;
-  total_races: number;
-  win: DetailedBetStats;
-  place: DetailedBetStats;
+  by_rank: RankBasedStats;
+  by_probability: ProbabilityBasedStats;
 }
 
 export interface StatisticsSummaryResponse {
