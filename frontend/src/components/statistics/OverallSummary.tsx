@@ -344,35 +344,35 @@ const TrackContent: React.FC<{ data: TrackTypeStats[] }> = ({ data }) => {
           {data.map((track, index) => (
             <tr key={track.track_type} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               <td className="px-4 py-2 font-medium text-gray-900">{track.track_type}</td>
-              <td className="px-4 py-2 text-right text-gray-700">{track.total_races}</td>
+              <td className="px-4 py-2 text-right text-gray-700">{track.by_rank.total_races}</td>
               <td className="px-4 py-2 text-right">
                 <span className="font-semibold text-blue-600">
-                  {track.win.accuracy.toFixed(1)}%
+                  {track.by_rank.win.accuracy.toFixed(1)}%
                 </span>
                 <p className="text-xs text-gray-500">
-                  ({track.win.hit_horses}/{track.win.total_horses})
+                  ({track.by_rank.win.hit_horses}/{track.by_rank.win.total_horses})
                 </p>
               </td>
               <td className="px-4 py-2 text-right">
                 <span className={`font-semibold ${
-                  track.win.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                  track.by_rank.win.roi >= 100 ? 'text-green-600' : 'text-red-600'
                 }`}>
-                  {track.win.roi.toFixed(1)}%
+                  {track.by_rank.win.roi.toFixed(1)}%
                 </span>
               </td>
               <td className="px-4 py-2 text-right">
                 <span className="font-semibold text-red-600">
-                  {track.place.accuracy.toFixed(1)}%
+                  {track.by_rank.place.accuracy.toFixed(1)}%
                 </span>
                 <p className="text-xs text-gray-500">
-                  ({track.place.hit_horses}/{track.place.total_horses})
+                  ({track.by_rank.place.hit_horses}/{track.by_rank.place.total_horses})
                 </p>
               </td>
               <td className="px-4 py-2 text-right">
                 <span className={`font-semibold ${
-                  track.place.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                  track.by_rank.place.roi >= 100 ? 'text-green-600' : 'text-red-600'
                 }`}>
-                  {track.place.roi.toFixed(1)}%
+                  {track.by_rank.place.roi.toFixed(1)}%
                 </span>
               </td>
             </tr>
@@ -406,35 +406,35 @@ const DistanceContent: React.FC<{ data: DistanceRangeStats[] }> = ({ data }) => 
           {data.map((distance, index) => (
             <tr key={distance.distance_range} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               <td className="px-4 py-2 font-medium text-gray-900">{distance.distance_range}</td>
-              <td className="px-4 py-2 text-right text-gray-700">{distance.total_races}</td>
+              <td className="px-4 py-2 text-right text-gray-700">{distance.by_rank.total_races}</td>
               <td className="px-4 py-2 text-right">
                 <span className="font-semibold text-blue-600">
-                  {distance.win.accuracy.toFixed(1)}%
+                  {distance.by_rank.win.accuracy.toFixed(1)}%
                 </span>
                 <p className="text-xs text-gray-500">
-                  ({distance.win.hit_horses}/{distance.win.total_horses})
+                  ({distance.by_rank.win.hit_horses}/{distance.by_rank.win.total_horses})
                 </p>
               </td>
               <td className="px-4 py-2 text-right">
                 <span className={`font-semibold ${
-                  distance.win.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                  distance.by_rank.win.roi >= 100 ? 'text-green-600' : 'text-red-600'
                 }`}>
-                  {distance.win.roi.toFixed(1)}%
+                  {distance.by_rank.win.roi.toFixed(1)}%
                 </span>
               </td>
               <td className="px-4 py-2 text-right">
                 <span className="font-semibold text-red-600">
-                  {distance.place.accuracy.toFixed(1)}%
+                  {distance.by_rank.place.accuracy.toFixed(1)}%
                 </span>
                 <p className="text-xs text-gray-500">
-                  ({distance.place.hit_horses}/{distance.place.total_horses})
+                  ({distance.by_rank.place.hit_horses}/{distance.by_rank.place.total_horses})
                 </p>
               </td>
               <td className="px-4 py-2 text-right">
                 <span className={`font-semibold ${
-                  distance.place.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                  distance.by_rank.place.roi >= 100 ? 'text-green-600' : 'text-red-600'
                 }`}>
-                  {distance.place.roi.toFixed(1)}%
+                  {distance.by_rank.place.roi.toFixed(1)}%
                 </span>
               </td>
             </tr>
@@ -468,35 +468,35 @@ const TrackConditionContent: React.FC<{ data: TrackConditionStats[] }> = ({ data
           {data.map((condition, index) => (
             <tr key={condition.track_condition} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               <td className="px-4 py-2 font-medium text-gray-900">{condition.track_condition}</td>
-              <td className="px-4 py-2 text-right text-gray-700">{condition.total_races}</td>
+              <td className="px-4 py-2 text-right text-gray-700">{condition.by_rank.total_races}</td>
               <td className="px-4 py-2 text-right">
                 <span className="font-semibold text-blue-600">
-                  {condition.win.accuracy.toFixed(1)}%
+                  {condition.by_rank.win.accuracy.toFixed(1)}%
                 </span>
                 <p className="text-xs text-gray-500">
-                  ({condition.win.hit_horses}/{condition.win.total_horses})
+                  ({condition.by_rank.win.hit_horses}/{condition.by_rank.win.total_horses})
                 </p>
               </td>
               <td className="px-4 py-2 text-right">
                 <span className={`font-semibold ${
-                  condition.win.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                  condition.by_rank.win.roi >= 100 ? 'text-green-600' : 'text-red-600'
                 }`}>
-                  {condition.win.roi.toFixed(1)}%
+                  {condition.by_rank.win.roi.toFixed(1)}%
                 </span>
               </td>
               <td className="px-4 py-2 text-right">
                 <span className="font-semibold text-red-600">
-                  {condition.place.accuracy.toFixed(1)}%
+                  {condition.by_rank.place.accuracy.toFixed(1)}%
                 </span>
                 <p className="text-xs text-gray-500">
-                  ({condition.place.hit_horses}/{condition.place.total_horses})
+                  ({condition.by_rank.place.hit_horses}/{condition.by_rank.place.total_horses})
                 </p>
               </td>
               <td className="px-4 py-2 text-right">
                 <span className={`font-semibold ${
-                  condition.place.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                  condition.by_rank.place.roi >= 100 ? 'text-green-600' : 'text-red-600'
                 }`}>
-                  {condition.place.roi.toFixed(1)}%
+                  {condition.by_rank.place.roi.toFixed(1)}%
                 </span>
               </td>
             </tr>
