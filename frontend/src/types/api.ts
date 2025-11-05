@@ -314,6 +314,7 @@ export interface TrackTypeStats {
   total_races: number;
   win: DetailedBetStats;
   place: DetailedBetStats;
+  by_probability: ProbabilityBasedStats;
 }
 
 export interface DistanceRangeStats {
@@ -321,6 +322,7 @@ export interface DistanceRangeStats {
   total_races: number;
   win: DetailedBetStats;
   place: DetailedBetStats;
+  by_probability: ProbabilityBasedStats;
 }
 
 export interface TrackConditionStats {
@@ -328,6 +330,7 @@ export interface TrackConditionStats {
   total_races: number;
   win: DetailedBetStats;
   place: DetailedBetStats;
+  by_probability: ProbabilityBasedStats;
 }
 
 export interface StatisticsSummaryResponse {

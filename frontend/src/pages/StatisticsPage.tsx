@@ -312,11 +312,14 @@ export const StatisticsPage: React.FC = () => {
               byTrackCondition={summary.by_track_condition}
             />
           ) : (
-            <ProbabilityBasedContent 
+            <ProbabilityBasedContent
               activeTab={activeTab}
               stats={summary.by_probability}
               byVenue={summary.by_venue}
               byGrade={summary.by_grade}
+              byTrackType={summary.by_track_type}
+              byDistance={summary.by_distance}
+              byTrackCondition={summary.by_track_condition}
             />
           )}
         </div>
@@ -904,13 +907,19 @@ interface ProbabilityBasedContentProps {
   stats: ProbabilityBasedStats;
   byVenue: VenueStats[];
   byGrade: GradeStats[];
+  byTrackType: TrackTypeStats[];
+  byDistance: DistanceRangeStats[];
+  byTrackCondition: TrackConditionStats[];
 }
 
 const ProbabilityBasedContent: React.FC<ProbabilityBasedContentProps> = ({
   activeTab,
   stats,
   byVenue,
-  byGrade
+  byGrade,
+  byTrackType,
+  byDistance,
+  byTrackCondition
 }) => {
   if (activeTab === 'overall') {
     return <ProbOverallContent stats={stats} />;
@@ -918,6 +927,12 @@ const ProbabilityBasedContent: React.FC<ProbabilityBasedContentProps> = ({
     return <ProbVenueContent data={byVenue} />;
   } else if (activeTab === 'grade') {
     return <ProbGradeContent data={byGrade} />;
+  } else if (activeTab === 'track') {
+    return <ProbTrackContent data={byTrackType} />;
+  } else if (activeTab === 'distance') {
+    return <ProbDistanceContent data={byDistance} />;
+  } else if (activeTab === 'condition') {
+    return <ProbConditionContent data={byTrackCondition} />;
   }
   return <p className="text-gray-500 text-center py-4">このタブでは確率閾値ベース統計は表示されません</p>;
 };
@@ -1128,6 +1143,183 @@ const ProbGradeContent: React.FC<{ data: GradeStats[] }> = ({ data }) => {
                   grade.by_probability.place.roi >= 100 ? 'text-green-600' : 'text-red-600'
                 }`}>
                   {grade.by_probability.place.roi.toFixed(1)}%
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+const ProbTrackContent: React.FC<{ data: TrackTypeStats[] }> = ({ data }) => {
+  if (data.length === 0) {
+    return <p className="text-gray-500 text-center py-4">データがありません</p>;
+  }
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-4 py-2 text-left text-gray-800">馬場種別</th>
+            <th className="px-4 py-2 text-right text-gray-800">単勝的中率</th>
+            <th className="px-4 py-2 text-right text-gray-800">単勝ROI</th>
+            <th className="px-4 py-2 text-right text-gray-800">複勝的中率</th>
+            <th className="px-4 py-2 text-right text-gray-800">複勝ROI</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((track, index) => (
+            <tr key={track.track_type} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td className="px-4 py-2 font-medium text-gray-900">{track.track_type}</td>
+              <td className="px-4 py-2 text-right">
+                <span className="font-semibold text-blue-600">
+                  {track.by_probability.win.accuracy.toFixed(1)}%
+                </span>
+                <p className="text-xs text-gray-500">
+                  ({track.by_probability.win.hit_horses}/{track.by_probability.win.recommended_horses})
+                </p>
+              </td>
+              <td className="px-4 py-2 text-right">
+                <span className={`font-semibold ${
+                  track.by_probability.win.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {track.by_probability.win.roi.toFixed(1)}%
+                </span>
+              </td>
+              <td className="px-4 py-2 text-right">
+                <span className="font-semibold text-red-600">
+                  {track.by_probability.place.accuracy.toFixed(1)}%
+                </span>
+                <p className="text-xs text-gray-500">
+                  ({track.by_probability.place.hit_horses}/{track.by_probability.place.recommended_horses})
+                </p>
+              </td>
+              <td className="px-4 py-2 text-right">
+                <span className={`font-semibold ${
+                  track.by_probability.place.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {track.by_probability.place.roi.toFixed(1)}%
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+const ProbDistanceContent: React.FC<{ data: DistanceRangeStats[] }> = ({ data }) => {
+  if (data.length === 0) {
+    return <p className="text-gray-500 text-center py-4">データがありません</p>;
+  }
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-4 py-2 text-left text-gray-800">距離範囲</th>
+            <th className="px-4 py-2 text-right text-gray-800">単勝的中率</th>
+            <th className="px-4 py-2 text-right text-gray-800">単勝ROI</th>
+            <th className="px-4 py-2 text-right text-gray-800">複勝的中率</th>
+            <th className="px-4 py-2 text-right text-gray-800">複勝ROI</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((distance, index) => (
+            <tr key={distance.distance_range} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td className="px-4 py-2 font-medium text-gray-900">{distance.distance_range}</td>
+              <td className="px-4 py-2 text-right">
+                <span className="font-semibold text-blue-600">
+                  {distance.by_probability.win.accuracy.toFixed(1)}%
+                </span>
+                <p className="text-xs text-gray-500">
+                  ({distance.by_probability.win.hit_horses}/{distance.by_probability.win.recommended_horses})
+                </p>
+              </td>
+              <td className="px-4 py-2 text-right">
+                <span className={`font-semibold ${
+                  distance.by_probability.win.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {distance.by_probability.win.roi.toFixed(1)}%
+                </span>
+              </td>
+              <td className="px-4 py-2 text-right">
+                <span className="font-semibold text-red-600">
+                  {distance.by_probability.place.accuracy.toFixed(1)}%
+                </span>
+                <p className="text-xs text-gray-500">
+                  ({distance.by_probability.place.hit_horses}/{distance.by_probability.place.recommended_horses})
+                </p>
+              </td>
+              <td className="px-4 py-2 text-right">
+                <span className={`font-semibold ${
+                  distance.by_probability.place.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {distance.by_probability.place.roi.toFixed(1)}%
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+const ProbConditionContent: React.FC<{ data: TrackConditionStats[] }> = ({ data }) => {
+  if (data.length === 0) {
+    return <p className="text-gray-500 text-center py-4">データがありません</p>;
+  }
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="min-w-full text-sm">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-4 py-2 text-left text-gray-800">馬場条件</th>
+            <th className="px-4 py-2 text-right text-gray-800">単勝的中率</th>
+            <th className="px-4 py-2 text-right text-gray-800">単勝ROI</th>
+            <th className="px-4 py-2 text-right text-gray-800">複勝的中率</th>
+            <th className="px-4 py-2 text-right text-gray-800">複勝ROI</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((condition, index) => (
+            <tr key={condition.track_condition} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td className="px-4 py-2 font-medium text-gray-900">{condition.track_condition}</td>
+              <td className="px-4 py-2 text-right">
+                <span className="font-semibold text-blue-600">
+                  {condition.by_probability.win.accuracy.toFixed(1)}%
+                </span>
+                <p className="text-xs text-gray-500">
+                  ({condition.by_probability.win.hit_horses}/{condition.by_probability.win.recommended_horses})
+                </p>
+              </td>
+              <td className="px-4 py-2 text-right">
+                <span className={`font-semibold ${
+                  condition.by_probability.win.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {condition.by_probability.win.roi.toFixed(1)}%
+                </span>
+              </td>
+              <td className="px-4 py-2 text-right">
+                <span className="font-semibold text-red-600">
+                  {condition.by_probability.place.accuracy.toFixed(1)}%
+                </span>
+                <p className="text-xs text-gray-500">
+                  ({condition.by_probability.place.hit_horses}/{condition.by_probability.place.recommended_horses})
+                </p>
+              </td>
+              <td className="px-4 py-2 text-right">
+                <span className={`font-semibold ${
+                  condition.by_probability.place.roi >= 100 ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {condition.by_probability.place.roi.toFixed(1)}%
                 </span>
               </td>
             </tr>
