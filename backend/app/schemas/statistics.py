@@ -100,25 +100,22 @@ class DetailedBetStats(BaseModel):
 class TrackTypeStats(BaseModel):
     """馬場種別統計"""
     track_type: str = Field(description="馬場種別（芝/ダート）")
-    total_races: int = Field(description="総レース数")
-    win: DetailedBetStats = Field(description="単勝統計")
-    place: DetailedBetStats = Field(description="複勝統計")
+    by_rank: RankBasedStats = Field(description="順位ベース統計")
+    by_probability: ProbabilityBasedStats = Field(description="確率閾値ベース統計")
 
 
 class DistanceRangeStats(BaseModel):
     """距離別統計"""
     distance_range: str = Field(description="距離範囲（例: 1200-1400m）")
-    total_races: int = Field(description="総レース数")
-    win: DetailedBetStats = Field(description="単勝統計")
-    place: DetailedBetStats = Field(description="複勝統計")
+    by_rank: RankBasedStats = Field(description="順位ベース統計")
+    by_probability: ProbabilityBasedStats = Field(description="確率閾値ベース統計")
 
 
 class TrackConditionStats(BaseModel):
     """馬場条件別統計（新規追加）"""
     track_condition: str = Field(description="馬場条件（良/稍重/重/不良/不明）")
-    total_races: int = Field(description="総レース数")
-    win: DetailedBetStats = Field(description="単勝統計")
-    place: DetailedBetStats = Field(description="複勝統計")
+    by_rank: RankBasedStats = Field(description="順位ベース統計")
+    by_probability: ProbabilityBasedStats = Field(description="確率閾値ベース統計")
 
 
 class StatisticsSummaryResponse(BaseModel):
