@@ -1158,6 +1158,13 @@ const ProbTrackContent: React.FC<{ data: TrackTypeStats[] }> = ({ data }) => {
     return <p className="text-gray-500 text-center py-4">データがありません</p>;
   }
 
+  // by_probabilityが存在するデータのみフィルタリング
+  const validData = data.filter(track => track.by_probability);
+
+  if (validData.length === 0) {
+    return <p className="text-gray-500 text-center py-4">確率閾値ベースのデータがありません</p>;
+  }
+
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full text-sm">
@@ -1171,7 +1178,7 @@ const ProbTrackContent: React.FC<{ data: TrackTypeStats[] }> = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((track, index) => (
+          {validData.map((track, index) => (
             <tr key={track.track_type} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               <td className="px-4 py-2 font-medium text-gray-900">{track.track_type}</td>
               <td className="px-4 py-2 text-right">
@@ -1217,6 +1224,13 @@ const ProbDistanceContent: React.FC<{ data: DistanceRangeStats[] }> = ({ data })
     return <p className="text-gray-500 text-center py-4">データがありません</p>;
   }
 
+  // by_probabilityが存在するデータのみフィルタリング
+  const validData = data.filter(distance => distance.by_probability);
+
+  if (validData.length === 0) {
+    return <p className="text-gray-500 text-center py-4">確率閾値ベースのデータがありません</p>;
+  }
+
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full text-sm">
@@ -1230,7 +1244,7 @@ const ProbDistanceContent: React.FC<{ data: DistanceRangeStats[] }> = ({ data })
           </tr>
         </thead>
         <tbody>
-          {data.map((distance, index) => (
+          {validData.map((distance, index) => (
             <tr key={distance.distance_range} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               <td className="px-4 py-2 font-medium text-gray-900">{distance.distance_range}</td>
               <td className="px-4 py-2 text-right">
@@ -1276,6 +1290,13 @@ const ProbConditionContent: React.FC<{ data: TrackConditionStats[] }> = ({ data 
     return <p className="text-gray-500 text-center py-4">データがありません</p>;
   }
 
+  // by_probabilityが存在するデータのみフィルタリング
+  const validData = data.filter(condition => condition.by_probability);
+
+  if (validData.length === 0) {
+    return <p className="text-gray-500 text-center py-4">確率閾値ベースのデータがありません</p>;
+  }
+
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full text-sm">
@@ -1289,7 +1310,7 @@ const ProbConditionContent: React.FC<{ data: TrackConditionStats[] }> = ({ data 
           </tr>
         </thead>
         <tbody>
-          {data.map((condition, index) => (
+          {validData.map((condition, index) => (
             <tr key={condition.track_condition} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
               <td className="px-4 py-2 font-medium text-gray-900">{condition.track_condition}</td>
               <td className="px-4 py-2 text-right">
