@@ -28,16 +28,24 @@ interface FilterSettings {
 type StatType = 'rank' | 'probability';
 type TabType = 'overall' | 'venue' | 'grade' | 'track' | 'distance' | 'condition';
 
+// 日付を YYYY-MM-DD 形式にフォーマット（タイムゾーン問題を回避）
+function formatDateToYYYYMMDD(date: Date): string {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
 // デフォルト開始日（30日前）
 function getDefaultStartDate(): string {
   const date = new Date();
   date.setDate(date.getDate() - 30);
-  return date.toISOString().split('T')[0];
+  return formatDateToYYYYMMDD(date);
 }
 
 // 今日の日付
 function getTodayString(): string {
-  return new Date().toISOString().split('T')[0];
+  return formatDateToYYYYMMDD(new Date());
 }
 
 // グレード名変換
@@ -97,10 +105,10 @@ export const StatisticsPage: React.FC = () => {
     const endDate = getTodayString();
     const startDate = new Date();
     startDate.setDate(startDate.getDate() - days);
-    
+
     const newFilters = {
       ...filters,
-      startDate: startDate.toISOString().split('T')[0],
+      startDate: formatDateToYYYYMMDD(startDate),
       endDate: endDate
     };
     
