@@ -590,7 +590,7 @@ class AccuracyCalculationService:
         win_threshold: float,
         place_threshold: float
     ) -> List[Dict]:
-        """馬場種別の統計（ROI追加版 + 確率閾値ベース対応）"""
+        """馬場種別の統計（競馬場別と同じ構造）"""
         track_groups = defaultdict(list)
         for r in results:
             track_type = r.get("track_type")
@@ -604,19 +604,7 @@ class AccuracyCalculationService:
 
             track_stats.append({
                 "track_type": track_type,
-                "total_races": rank_stats["total_races"],
-                "win": {
-                    "hit_horses": rank_stats["win"]["hit_horses"],
-                    "total_horses": rank_stats["win"]["total_horses"],
-                    "accuracy": rank_stats["win"]["accuracy"],
-                    "roi": rank_stats["win"]["roi"]
-                },
-                "place": {
-                    "hit_horses": rank_stats["place"]["hit_horses"],
-                    "total_horses": rank_stats["place"]["total_horses"],
-                    "accuracy": rank_stats["place"]["accuracy"],
-                    "roi": rank_stats["place"]["roi"]
-                },
+                "by_rank": rank_stats,
                 "by_probability": prob_stats
             })
 
@@ -628,7 +616,7 @@ class AccuracyCalculationService:
         win_threshold: float,
         place_threshold: float
     ) -> List[Dict]:
-        """距離別の統計（ROI追加版 + 確率閾値ベース対応）"""
+        """距離別の統計（競馬場別と同じ構造）"""
         distance_ranges = {
             "1000-1200m": (1000, 1200),
             "1200-1400m": (1200, 1400),
@@ -652,19 +640,7 @@ class AccuracyCalculationService:
                 prob_stats = self._calculate_probability_based_stats(range_results, win_threshold, place_threshold)
                 distance_stats.append({
                     "distance_range": range_name,
-                    "total_races": rank_stats["total_races"],
-                    "win": {
-                        "hit_horses": rank_stats["win"]["hit_horses"],
-                        "total_horses": rank_stats["win"]["total_horses"],
-                        "accuracy": rank_stats["win"]["accuracy"],
-                        "roi": rank_stats["win"]["roi"]
-                    },
-                    "place": {
-                        "hit_horses": rank_stats["place"]["hit_horses"],
-                        "total_horses": rank_stats["place"]["total_horses"],
-                        "accuracy": rank_stats["place"]["accuracy"],
-                        "roi": rank_stats["place"]["roi"]
-                    },
+                    "by_rank": rank_stats,
                     "by_probability": prob_stats
                 })
 
@@ -676,7 +652,7 @@ class AccuracyCalculationService:
         win_threshold: float,
         place_threshold: float
     ) -> List[Dict]:
-        """馬場条件別の統計（確率閾値ベース対応）"""
+        """馬場条件別の統計（競馬場別と同じ構造）"""
         condition_groups = defaultdict(list)
         for r in results:
             condition = r.get("track_condition") or "不明"
@@ -689,19 +665,7 @@ class AccuracyCalculationService:
 
             condition_stats.append({
                 "track_condition": condition,
-                "total_races": rank_stats["total_races"],
-                "win": {
-                    "hit_horses": rank_stats["win"]["hit_horses"],
-                    "total_horses": rank_stats["win"]["total_horses"],
-                    "accuracy": rank_stats["win"]["accuracy"],
-                    "roi": rank_stats["win"]["roi"]
-                },
-                "place": {
-                    "hit_horses": rank_stats["place"]["hit_horses"],
-                    "total_horses": rank_stats["place"]["total_horses"],
-                    "accuracy": rank_stats["place"]["accuracy"],
-                    "roi": rank_stats["place"]["roi"]
-                },
+                "by_rank": rank_stats,
                 "by_probability": prob_stats
             })
 
